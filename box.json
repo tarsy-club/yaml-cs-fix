@@ -1,0 +1,26 @@
+{
+    "main": "src/console.php",
+    "force-autodiscovery": true,
+    "directories": [
+        "resources/bundles",
+        "resources/kernel",
+        "var/cache/local"
+    ],
+    "files": [
+        "src/files/functions.php",
+        ".env"
+    ],
+    "compression": "GZ",
+    "finder": [
+        {
+            "name": "composer.json",
+            "in": "."
+        }
+    ],
+    "banner": [
+        "This file is part tarsy-club/yaml-cs-fix",
+        "",
+        "This source files is subject to the proprietary license"
+    ],
+    "output": "tarsy-club-yaml-cs-fix"
+}

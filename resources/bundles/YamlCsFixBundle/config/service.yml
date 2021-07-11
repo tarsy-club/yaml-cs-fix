@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autoconfigure: false
+        autowire: false
+        public: false
+    tarsy-club.yaml_cs_fix.command.yaml_fix:
+        calls:
+            - [setFormat, ['@tarsy-club.yaml_cs_fix.format.yaml_format']]
+        class: '%tarsy-club.yaml_cs_fix.command.class.yaml_fix%'
+        tags:
+            - { name: console.command }
+    tarsy-club.yaml_cs_fix.format.yaml_format:
+        class: '%tarsy-club.yaml_cs_fix.format.class.yaml_format%'

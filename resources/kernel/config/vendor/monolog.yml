@@ -1,0 +1,5 @@
+monolog:
+    handlers:
+        console:
+            channels: ['!event', '!console']
+            type: console

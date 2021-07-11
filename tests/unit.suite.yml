@@ -1,0 +1,5 @@
+actor: UnitTester
+modules:
+    enabled:
+        - Asserts
+        - \TarsyClub\YamlCsFix\Test\Helper\Unit

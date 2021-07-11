@@ -1,0 +1,60 @@
+EventBundle\Model\Event\Entity\Event:
+    constraints:
+        -
+            Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                fields:
+                    - title
+                    - dateFrom
+                    - dateTo
+                ignoreNull: false
+    properties:
+        areas:
+            -
+                NotBlank: null
+        city:
+            -
+                NotBlank: null
+        countries:
+            -
+                EventBundle\Validator\Constraints\CountriesConstraint: null
+        dateFrom:
+            -
+                NotNull: null
+            -
+                Date: null
+        dateRequestTo:
+            -
+                Date: null
+        dateTo:
+            -
+                Date: null
+        email:
+            -
+                Email: null
+        fax:
+            -
+                Length:
+                    max: 32
+        phone:
+            -
+                Length:
+                    max: 32
+        status:
+            -
+                NotBlank: null
+            -
+                Choice:
+                    message: 'Choose a valid status'
+        title:
+            -
+                NotBlank: null
+            -
+                Length:
+                    max: 255
+        type:
+            -
+                Length:
+                    max: 255
+        url:
+            -
+                Url: null

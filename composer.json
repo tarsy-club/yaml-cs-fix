@@ -1,0 +1,140 @@
+{
+    "autoload": {
+        "files": [
+            "src/files/app_get_parameters.php"
+        ],
+        "psr-4": {
+            "TarsyClub\\YamlCsFix\\": "src/bundles"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "tests/_support/UnitTester.php"
+        ],
+        "psr-4": {
+            "TarsyClub\\YamlCsFix\\Test\\": "tests/unit",
+            "TarsyClub\\YamlCsFix\\Test\\Helper\\": "tests/_support/Helper",
+            "TarsyClub\\YamlCsFix\\Test\\_generated\\": "tests/_support/_generated"
+        }
+    },
+    "bin": [
+        "tarsy-club-yaml-cs-fix"
+    ],
+    "config": {
+        "apcu-autoloader": true,
+        "cache-files-ttl": 7776000,
+        "discard-changes": true,
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "description": "tarsy-club yaml-cs-fix",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        },
+        "hooks": {
+            "pre-commit": "composer run git:pre-commit"
+        },
+        "scripts-dev": {
+            "dev:test:composer": {
+                "lock": "@_composer:update:min nothing --lock",
+                "strict": "@_composer:strict"
+            },
+            "_json:fix": "json-cs-fix.sh",
+            "box:compile": [
+                "@cache:warmup",
+                "phar-box compile -c box.json"
+            ],
+            "codecept": "codecept -c ${PWD}/tests/codeception.yml",
+            "codecept:build": "@codecept build",
+            "cs:fix": [
+                "@composer fix -d vendor/tarsy-club/php-cs-fix -- --cache-file=${PWD}/var/phpcs/.php_cs.cache ${PWD}/src",
+                "@composer fix -d vendor/tarsy-club/php-cs-fix -- --cache-file=${PWD}/var/phpcs/.php_cs.cache ${PWD}/tests"
+            ],
+            "fix": [
+                "@cs:fix",
+                "@json:fix",
+                "@yaml:fix"
+            ],
+            "git:add": "git add .",
+            "git:pre-commit": [
+                "@validate",
+                "@fix",
+                "@box:compile",
+                "@git:add"
+            ],
+            "git:update-hooks": {
+                "add": "cghooks add -f --lock-dir=${PWD}/var/cghooks",
+                "update": "cghooks update --lock-dir=${PWD}/var/cghooks"
+            },
+            "json:fix": [
+                "@_json:fi",
+                "@_json:fi composer.lock",
+                "@_json:fi box.lock"
+            ],
+            "post-install-cmd": "@git:update-hooks",
+            "test:unit": [
+                "@codecept:build",
+                "@codecept run unit"
+            ],
+            "validate": [
+                "@validate:composer"
+            ],
+            "yaml:fix": "@console tarsy-club:yaml-cs-fix -p resources"
+        }
+    },
+    "license": "proprietary",
+    "name": "tarsy-club/yaml-cs-fix",
+    "require": {
+        "ext-apcu": "*",
+        "tarsy-club/framework": "^1.0",
+        "php": "^7.1|^8.0",
+        "symfony/config": "^4.0|^5.0",
+        "symfony/console": "^4.0|^5.0",
+        "symfony/dependency-injection": "^4.0|^5.0",
+        "symfony/dotenv": "^4.0|^5.0",
+        "symfony/event-dispatcher": "^4.0|^5.0",
+        "symfony/filesystem": "^4.0|^5.0",
+        "symfony/finder": "^4.0|^5.0",
+        "symfony/framework-bundle": "^4.0|^5.0",
+        "symfony/http-foundation": "^4.0|^5.0",
+        "symfony/http-kernel": "^4.0|^5.0",
+        "symfony/mime": "^4.0|^5.0",
+        "symfony/monolog-bridge": "^4.0|^5.0",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/process": "^4.0|^5.0",
+        "symfony/security-core": "^4.0|^5.0",
+        "symfony/var-exporter": "^4.0|^5.0",
+        "symfony/yaml": "^4.0|^5.0"
+    },
+    "require-dev": {
+        "neronmoon/scriptsdev": "*",
+        "allure-framework/allure-codeception": "^1.0",
+        "brainmaestro/composer-git-hooks": "^2.8",
+        "codeception/codeception": "^2.0",
+        "tarsy-club/json-cs-fix": "^1.0",
+        "tarsy-club/php-cs-fix": "^1.0",
+        "jms/serializer": "^1.0",
+        "symfony/browser-kit": "^4.0|^5.0",
+        "symfony/css-selector": "^4.0|^5.0",
+        "symfony/debug": "^4.0|^5.0",
+        "symfony/dom-crawler": "^4.0|^5.0",
+        "symfony/options-resolver": "^4.0|^5.0",
+        "symfony/routing": "^4.0|^5.0",
+        "symfony/stopwatch": "^4.0|^5.0"
+    },
+    "scripts": {
+        "_composer:install": "composer install --no-interaction --no-suggest",
+        "_composer:strict": "composer validate --no-interaction --no-plugins --strict --no-check-all --no-check-publish",
+        "_composer:update": "composer update --no-interaction --no-plugins --no-suggest --no-scripts",
+        "_composer:update:min": "@_composer:update --no-autoloader --ignore-platform-reqs --no-progress",
+        "cache:clear": "@console cache:clear",
+        "cache:warmup": "@console cache:warmup",
+        "console": "src/console.php",
+        "test:composer": {
+            "lock": "@_composer:update:min nothing --lock --no-dev",
+            "strict": "@_composer:strict"
+        }
+    },
+    "type": "bundle"
+}

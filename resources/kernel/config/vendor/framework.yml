@@ -1,0 +1,18 @@
+framework:
+    annotations:
+        enabled: false
+    csrf_protection:
+        enabled: false
+    form:
+        enabled: false
+    fragments:
+        enabled: false
+    php_errors:
+        log: true
+    secret: 'null'
+    session:
+        enabled: false
+    translator:
+        enabled: false
+    validation:
+        enabled: false

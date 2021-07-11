@@ -1,0 +1,3 @@
+parameters:
+    tarsy-club.yaml_cs_fix.command.class.yaml_fix: TarsyClub\YamlCsFix\YamlCsFixBundle\Command\YamlFixCommand
+    tarsy-club.yaml_cs_fix.format.class.yaml_format: TarsyClub\YamlCsFix\YamlCsFixBundle\Format\YamlFormat
