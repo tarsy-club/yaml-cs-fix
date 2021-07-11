@@ -2,10 +2,10 @@
 
 namespace TarsyClub\YamlCsFix\YamlCsFixBundle;
 
-use TarsyClub\Framework\PrependExtension;
 use ReflectionClass;
 use ReflectionException;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use TarsyClub\Framework\PrependExtension;
 
 class YamlCsFixBundle extends Bundle
 {

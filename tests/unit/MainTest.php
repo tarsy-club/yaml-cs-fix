@@ -12,6 +12,8 @@ use Yandex\Allure\Adapter\Annotation\Title;
  * @Stories({"Main"})
  *
  * @tarsy-club
+ *
+ * @internal
  */
 class MainTest extends Unit
 {

@@ -36,10 +36,6 @@
             "pre-commit": "composer run git:pre-commit"
         },
         "scripts-dev": {
-            "dev:test:composer": {
-                "lock": "@_composer:update:min nothing --lock",
-                "strict": "@_composer:strict"
-            },
             "_json:fix": "json-cs-fix.sh",
             "box:compile": [
                 "@cache:warmup",
@@ -51,6 +47,10 @@
                 "@composer fix -d vendor/tarsy-club/php-cs-fix -- --cache-file=${PWD}/var/phpcs/.php_cs.cache ${PWD}/src",
                 "@composer fix -d vendor/tarsy-club/php-cs-fix -- --cache-file=${PWD}/var/phpcs/.php_cs.cache ${PWD}/tests"
             ],
+            "dev:test:composer": {
+                "lock": "@_composer:update:min nothing --lock",
+                "strict": "@_composer:strict"
+            },
             "fix": [
                 "@cs:fix",
                 "@json:fix",
@@ -87,7 +87,6 @@
     "name": "tarsy-club/yaml-cs-fix",
     "require": {
         "ext-apcu": "*",
-        "tarsy-club/framework": "^1.0",
         "php": "^7.1|^8.0",
         "symfony/config": "^4.0|^5.0",
         "symfony/console": "^4.0|^5.0",
@@ -105,23 +104,24 @@
         "symfony/process": "^4.0|^5.0",
         "symfony/security-core": "^4.0|^5.0",
         "symfony/var-exporter": "^4.0|^5.0",
-        "symfony/yaml": "^4.0|^5.0"
+        "symfony/yaml": "^4.0|^5.0",
+        "tarsy-club/framework": "^1.0"
     },
     "require-dev": {
-        "neronmoon/scriptsdev": "*",
         "allure-framework/allure-codeception": "^1.0",
         "brainmaestro/composer-git-hooks": "^2.8",
         "codeception/codeception": "^2.0",
-        "tarsy-club/json-cs-fix": "^1.0",
-        "tarsy-club/php-cs-fix": "^1.0",
         "jms/serializer": "^1.0",
+        "neronmoon/scriptsdev": "*",
         "symfony/browser-kit": "^4.0|^5.0",
         "symfony/css-selector": "^4.0|^5.0",
         "symfony/debug": "^4.0|^5.0",
         "symfony/dom-crawler": "^4.0|^5.0",
         "symfony/options-resolver": "^4.0|^5.0",
         "symfony/routing": "^4.0|^5.0",
-        "symfony/stopwatch": "^4.0|^5.0"
+        "symfony/stopwatch": "^4.0|^5.0",
+        "tarsy-club/json-cs-fix": "^1.0",
+        "tarsy-club/php-cs-fix": "^1.0"
     },
     "scripts": {
         "_composer:install": "composer install --no-interaction --no-suggest",
